@@ -13,9 +13,9 @@ class CategorySeeder extends Seeder
     public function run(): void
     {
         $names = [
-            'Машины',
-            'Гаджеты',
+            'Автомобили',
             'Наука',
+            'Спорт',
         ];
 
         foreach ($names as $name) {

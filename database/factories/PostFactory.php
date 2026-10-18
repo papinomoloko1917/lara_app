@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -20,7 +19,7 @@ class PostFactory extends Factory
     {
         return [
             'title' => fake()->sentence(3),
-            'category_id' => Category::inRandomOrder()->value('id'),
+            'likes' => fake()->numberBetween(0, 100),
         ];
     }
 }
