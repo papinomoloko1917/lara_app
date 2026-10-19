@@ -22,9 +22,8 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call([
-            MechanicSeeder::class,
-            CarSeeder::class,
-            OwnerSeeder::class,
+            CategorySeeder::class,
+            PostSeeder::class,
         ]);
     }
 }
