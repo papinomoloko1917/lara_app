@@ -2,13 +2,13 @@
 
 namespace Database\Factories;
 
-use App\Models\Post;
+use App\Models\Mechanic;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<Post>
+ * @extends Factory<Mechanic>
  */
-class PostFactory extends Factory
+class MechanicFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,8 +18,7 @@ class PostFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => fake()->sentence(3),
-            'likes' => fake()->numberBetween(0, 100),
+            'name' => fake()->name(),
         ];
     }
 }

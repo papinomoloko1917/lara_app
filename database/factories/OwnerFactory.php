@@ -1,14 +1,15 @@
-    <?php
+<?php
 
 namespace Database\Factories;
 
-use App\Models\Category;
+use App\Models\Car;
+use App\Models\Owner;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<Category>
+ * @extends Factory<Owner>
  */
-class CategoryFactory extends Factory
+class OwnerFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,7 +19,8 @@ class CategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => fake()->name(),
+            'car_id' => Car::inRandomOrder()->value('id'),
         ];
     }
 }
