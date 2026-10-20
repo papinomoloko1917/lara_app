@@ -1,7 +1,10 @@
-<form action="/post" method="POST">
+<form action="" method="POST">
     @csrf
-    <input name="title">
-    <input name="slug">
-    <textarea name="text" ></textarea>
+    <div>
+        <input name="title">
+    </div>
+    <div>
+        <input name="email">
+    </div>
     <input type="submit">
 </form>

@@ -2,30 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
     public function form(Request $request)
     {
-        $data = $request->all();
 
-        return view('post.form', ['data' => $data]);
+        if ($request->isMethod('post')) {
 
-    }
+            $request->validate([
+                'title' => 'required',
+                'email' => 'email',
+            ]);
 
-    public function store(Request $request)
-    {
-        $post = new Post;
+            dump('Данные прошли проверку');
 
-        $post->title = $request->input('title');
-        $post->slug = $request->input('slug');
-        $post->text = $request->input('text');
+        }
 
-        $post->save();
-
-        return 'post saved';
-
+        return view('post.form');
     }
 }
