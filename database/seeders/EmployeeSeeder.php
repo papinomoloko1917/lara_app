@@ -2,16 +2,16 @@
 
 namespace Database\Seeders;
 
-use App\Models\Comment;
+use App\Models\Employee;
 use Illuminate\Database\Seeder;
 
-class CommentSeeder extends Seeder
+class EmployeeSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Comment::factory(30)->create();
+        Employee::factory(30)->create();
     }
 }
