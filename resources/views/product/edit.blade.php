@@ -1,4 +1,6 @@
 <form action="/product/{{ $product->id }}/update" method="POST">
+    @csrf
+    @method('PUT')
     <label for="name">Имя</label>
     <input type="text" name="name" value="{{ $product->name }}">
 

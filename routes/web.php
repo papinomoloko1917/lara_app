@@ -13,6 +13,6 @@ Route::get('/product/{id}/show', [ProductController::class, 'show']);
 
 Route::get('/product/{id}/edit', [ProductController::class, 'edit']);
 
-Route::post('/product/{id}/update', [ProductController::class, 'update']);
+Route::put('/product/{id}/update', [ProductController::class, 'update']);
 
 Route::delete('/product/{id}/delete', [ProductController::class, 'destroy']);
