@@ -22,7 +22,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('product.create');
     }
 
     /**
@@ -30,7 +30,17 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product = new Product;
+
+        $data = $request->validate([
+            'name' => 'required|min:3|string|max:255',
+            'price' => 'required|numeric|min:0|decimal:0,2',
+            'amount' => 'required|integer|min:1',
+        ]);
+
+        $product->create($data);
+
+        return redirect('/products');
     }
 
     /**
@@ -38,7 +48,9 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $product = Product::findOrFail($id);
+
+        return view('product.show')->with('product', $product);
     }
 
     /**
@@ -46,7 +58,9 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $product = Product::findOrFail($id);
+
+        return view('product.edit')->with('product', $product);
     }
 
     /**
@@ -54,7 +68,17 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $product = Product::findOrFail($id);
+
+        $data = $request->validate([
+            'name' => 'required|min:3|string|max:255',
+            'price' => 'required|numeric|min:0|decimal:0,2',
+            'amount' => 'required|integer|min:1',
+        ]);
+
+        $product->update($data);
+
+        return redirect('/products');
     }
 
     /**
@@ -62,6 +86,10 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $product = Product::findOrFail($id);
+
+        $product->delete();
+
+        return redirect('/products')->with('success', 'Успешное удаление');
     }
 }
