@@ -30,15 +30,13 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $product = new Product;
-
         $data = $request->validate([
             'name' => 'required|min:3|string|max:255',
             'price' => 'required|numeric|min:0|decimal:0,2',
             'amount' => 'required|integer|min:1',
         ]);
 
-        $product->create($data);
+        Product::create($data);
 
         return redirect('/products');
     }
