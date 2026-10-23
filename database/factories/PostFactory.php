@@ -2,13 +2,13 @@
 
 namespace Database\Factories;
 
-use App\Models\Product;
+use App\Models\Post;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<Product>
+ * @extends Factory<Post>
  */
-class ProductFactory extends Factory
+class PostFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,9 +18,8 @@ class ProductFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->word(),
-            'price' => fake()->numberBetween(100, 10000),
-            'amount' => fake()->numberBetween(1, 100),
+            'title' => fake()->word(),
+            'text' => fake()->sentence(7),
         ];
     }
 }
