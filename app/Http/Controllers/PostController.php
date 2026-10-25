@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePostRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -10,9 +11,9 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::orderBy('id')->get();
+        $posts = Post::all();
 
         return view('posts.index')->with('posts', $posts);
     }
@@ -22,18 +23,16 @@ class PostController extends Controller
      */
     public function create()
     {
+
         return view('posts.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StorePostRequest $request)
     {
-        $data = $request->validate([
-            'title' => 'required|string|min:3|max:255',
-            'text' => 'required|string|min:3',
-        ]);
+        $data = $request->validated();
 
         Post::create($data);
 
@@ -76,7 +75,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        $post->destroy($post->id);
+        $post->delete();
 
         return back();
     }

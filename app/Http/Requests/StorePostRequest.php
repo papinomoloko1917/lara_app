@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Override;
 
 class StorePostRequest extends FormRequest
 {
@@ -12,7 +13,7 @@ class StorePostRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,7 +24,17 @@ class StorePostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => 'required|min:3|max:255|string',
+            'text' => 'required|min:3|string',
+        ];
+    }
+
+    #[Override]
+    public function attributes(): array
+    {
+        return [
+            'title' => '"Название статьи"',
+            'text' => '"Текст статьи"',
         ];
     }
 }

@@ -26,4 +26,18 @@ class UserFactory extends Factory
             'name' => fake()->name(),
         ];
     }
+
+    public function admin(): static
+    {
+        return $this->state([
+            'role' => 'admin',
+        ]);
+    }
+
+    public function user(): static
+    {
+        return $this->state([
+            'role' => 'user',
+        ]);
+    }
 }
