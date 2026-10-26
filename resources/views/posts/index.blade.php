@@ -1,3 +1,5 @@
+@extends('layouts.app')
+
 @if (session('success'))
     <p>{{ session('success') }}</p>
 @endif
@@ -16,12 +18,12 @@
             @forelse ($posts as $post)
                 <li style="display: flex; align-items: center; gap: 10px; padding: 5px;">{{ $loop->iteration }}.
                     <a href="{{ route('posts.show', $post) }}">{{ $post->title }}</a>
-                    <a href="{{ route('posts.edit', $post) }}"><button
+                    <a class="text-blue-600" href="{{ route('posts.edit', $post) }}"><button
                             style="cursor: pointer">Редактировать</button></a>
                     <form action="{{ route('posts.destroy', $post) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" style="cursor: pointer">Удалить</button>
+                        <button class="text-red-600" type="submit" style="cursor: pointer">Удалить</button>
                     </form>
                 </li>
 

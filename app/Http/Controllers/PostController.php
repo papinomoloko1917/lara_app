@@ -13,7 +13,10 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
-        $posts = Post::all();
+        $posts = Post::orderBy('id')
+            ->when(request('search'), fn ($q, $s) => $q
+                ->where('title', 'like', "%{$s}%"))
+            ->paginate(10)->withQueryString();
 
         return view('posts.index')->with('posts', $posts);
     }

@@ -1,3 +1,5 @@
+@extends('layouts.app')
+
 <div>
     <h3>Создание нового поста</h3>
     <form style="display: flex; flex-direction: column; gap: 8px; max-width: 300px;" action="{{ route('posts.store') }}"
