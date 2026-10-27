@@ -12,7 +12,7 @@ class Post extends Model
     /** @use HasFactory<PostFactory> */
     use HasFactory;
 
-    protected $fillable = ['title', 'text'];
+    protected $fillable = ['title', 'text', 'user_id', 'file'];
 
     public function user(): BelongsTo
     {

@@ -26,6 +26,8 @@ class StorePostRequest extends FormRequest
         return [
             'title' => 'required|min:3|max:255|string',
             'text' => 'required|min:3|string',
+            'user_id' => 'required|numeric',
+            'file' => 'file|nullable',
         ];
     }
 
