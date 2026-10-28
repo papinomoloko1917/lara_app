@@ -15,8 +15,6 @@ class VisitCounter
      */
     public function handle(Request $request, Closure $next): Response
     {
-        echo 111;
-
         return $next($request);
     }
 }

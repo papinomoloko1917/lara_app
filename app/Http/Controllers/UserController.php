@@ -2,17 +2,53 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\OrderShipped;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Mail;
+use App\Http\Requests\LoginRequest;
+use App\Http\Requests\RegisterRequest;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
-    public function welcome()
+    public function showRegister()
     {
-        Mail::to('ip_varivoda@mail.ru')
-            ->send(new OrderShipped('Ivan'));
+        return view('users.show');
+    }
 
-        return 'Mail sent';
+    public function register(RegisterRequest $request)
+    {
+        $user = User::create($request->validated());
+
+        Auth::login($user);
+
+        return redirect(route('posts.index'));
+
+    }
+
+    public function showLogin()
+    {
+        return view('users.login');
+    }
+
+    public function login(LoginRequest $request)
+    {
+        if (Auth::attempt($request->validated())) {
+            $request->session()->regenerate();
+
+            return redirect(route('posts.index'));
+        }
+
+        return back()->withErrors([
+            'email' => 'Invalid credentials',
+        ]);
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        Session::invalidate();
+        Session::regenerateToken();
+
+        return redirect(route('posts.index'));
     }
 }

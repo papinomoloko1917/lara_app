@@ -19,5 +19,9 @@ class DatabaseSeeder extends Seeder
         $user = User::factory()->user()->has(Post::factory())->create();
 
         Post::factory()->count(30)->for($user)->create();
+
+        $this->call(
+            ProductSeeder::class,
+        );
     }
 }
