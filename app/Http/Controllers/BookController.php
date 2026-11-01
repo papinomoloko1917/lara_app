@@ -8,8 +8,15 @@ class BookController extends Controller
 {
     public function index()
     {
-        $books = Book::all();
+        $books = Book::OrderBy('id')->paginate(6);
 
-        return view('books.index')->with('books', $books);
+        return view('books.index', compact('books'));
+    }
+
+    public function show(int $id)
+    {
+        $book = Book::findOrFail($id);
+
+        return view('books.show', compact('book'));
     }
 }

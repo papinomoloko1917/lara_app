@@ -10,36 +10,30 @@
                 </div>
                 <ul tabindex="-1"
                     class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                    <li><a href="{{ route('books') }}">Книги</a></li>
-                    <li>
-                        <a>Parent</a>
-                        <ul class="p-2">
-                            <li><a>Submenu 1</a></li>
-                            <li><a>Submenu 2</a></li>
-                        </ul>
-                    </li>
-                    <li><a>Item 3</a></li>
+                    <li><a href="{{ route('books.index') }}">Книги</a></li>
                 </ul>
             </div>
-            <a href="{{ route('home') }}" class="btn btn-ghost text-xl">Книги</a>
+            <a href="{{ route('home') }}" class="btn btn-ghost text-xl">{{ config('app.name') }}</a>
         </div>
         <div class="navbar-center hidden lg:flex">
             <ul class="menu menu-horizontal px-1">
-                <li><a href="{{ route('books') }}">Книги</a></li>
-                <li>
-                    <details>
-                        <summary>Parent</summary>
-                        <ul class="p-2
-                        bg-base-100 w-40 z-1">
-                            <li><a>Submenu 1</a></li>
-                            <li><a>Submenu 2</a></li>
-                        </ul>
-                    </details>
-                </li>
-                <li><a>Item 3</a></li>
+                <li><a href="{{ route('books.index') }}">Книги</a></li>
             </ul>
         </div>
-        <div class="navbar-end">
-            <a class="btn">Button</a>
-        </div>
+        @guest
+            <div class="navbar-end gap-4">
+                <a href="{{ route('login') }}" class="btn btn-neutral">Вход</a>
+                <a href="{{ route('registration') }}" class="btn btn-neutral">Регистрация</a>
+            </div>
+        @endguest
+        @auth
+            <span>Здравствуй {{ Auth::user()->name }}</span>
+            <div class="navbar-end">
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="btn btn-neutral">Выход</button>
+                </form>
+
+            </div>
+        @endauth
     </div>

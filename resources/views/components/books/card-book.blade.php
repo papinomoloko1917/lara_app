@@ -7,11 +7,11 @@
         <h2 class="card-title">{{ $book->title }}</h2>
 
         <p class="line-clamp-3">
-            {{ $book->description }}
+            {{ Str::limit($book->description, 90) }}
         </p>
 
         <div class="card-actions justify-end">
-            <button class="btn btn-primary">Читать</button>
+            <a href="{{ route('books.show', $book) }}"><button class="btn btn-primary">Подробнее</button></a>
         </div>
     </div>
 </div>
