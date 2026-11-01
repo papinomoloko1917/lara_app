@@ -8,10 +8,17 @@
                     {{ $book->description }}
                 </p>
                 <div class="flex gap-4">
-                    <button class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+                    <button class="btn btn-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="lucide lucide-shopping-cart-plus preview-icon">
+                            <path d="M16 5h6" />
+                            <path d="M19 2v6" />
+                            <path d="m2.05 2.05 1.099-.028a1 1 0 011.008.815l2.69 14.347A1 1 0 007.83 18H18" />
+                            <path d="M4.564 5H12" />
+                            <path d="M6.25 14h12.712a2 2 0 001.991-1.57l.172-1.041" />
+                            <circle cx="18" cy="20" r="2" />
+                            <circle cx="8" cy="20" r="2" />
                         </svg>
                         В корзину</button>
                     <a href="{{ route('books.index') }}">

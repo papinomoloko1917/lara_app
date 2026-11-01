@@ -9,7 +9,7 @@
 
 </head>
 
-<body class="min-h-screen flex flex-col">
+<body class="min-h-screen flex flex-col px-4">
     <x-header />
     <main class="flex-1">
         <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-10">

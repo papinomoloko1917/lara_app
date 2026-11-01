@@ -27,13 +27,39 @@
             </div>
         @endguest
         @auth
-            <span>Здравствуй {{ Auth::user()->name }}</span>
-            <div class="navbar-end">
-                <form action="{{ route('logout') }}" method="POST">
-                    @csrf
-                    <button type="submit" class="btn btn-neutral">Выход</button>
-                </form>
+            <div class="navbar-end gap-5">
+                <a href="" class="btn btn-ghost btn-circle" aria-label="Корзина">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m2.05 2.05 1.099-.028a1 1 0 0 1 1.008.815l2.69 14.347A1 1 0 0 0 7.83 18H18" />
+                        <path d="M4.563 5h16.435a1 1 0 0 1 .981 1.204l-1.026 6.226A2 2 0 0 1 18.962 14H6.25" />
+                        <circle cx="18" cy="20" r="2" />
+                        <circle cx="8" cy="20" r="2" />
+                    </svg>
+                </a>
+                <div class="dropdown dropdown-end">
+                    <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar avatar-placeholder">
+                        <div class="bg-neutral text-neutral-content w-9 rounded-full">
+                            <span>{{ Str::upper(Str::substr(Auth::user()->name, 0, 1)) }}</span>
+                        </div>
+                    </div>
 
+                    <ul tabindex="0"
+                        class="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-56 p-2 shadow">
+                        <li class="menu-title">
+                            <span class="text-base-content/70">{{ auth()->user()->name }}</span>
+                            <span class="text-xs text-base-content/50">{{ auth()->user()->email }}</span>
+                        </li>
+                        <li><a href="">Профиль</a></li>
+                        <li><a href="">Настройки</a></li>
+                        <li>
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <button type="submit" class="w-full text-left cursor-pointer">Выход</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
             </div>
         @endauth
     </div>
