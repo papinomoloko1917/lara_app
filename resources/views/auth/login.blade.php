@@ -12,13 +12,14 @@
             <fieldset class="fieldset">
                 <legend class="fieldset-legend">Email</legend>
                 <input name="email" type="email" class="input w-full" placeholder="Ваш почтовый ящик..."
-                    value="{{ old('email') }}" />
+                    autocomplete="email" required value="{{ old('email') }}" />
                 @error('email')
                     <p class="label text-red-500">{{ $message }}</p>
                 @enderror
 
                 <legend class="fieldset-legend">Пароль</legend>
-                <input name="password" type="password" class="input w-full" placeholder="Придумайте пароль" />
+                <input name="password" type="password" class="input w-full" placeholder="Введите пароль" required
+                    autocomplete="current-password" />
                 @error('password')
                     <p class="label text-red-500">{{ $message }}</p>
                 @enderror
@@ -26,8 +27,9 @@
 
             <div class="flex items-center justify-between mt-4">
                 <button type="submit" class="btn btn-neutral">Вход</button>
-                <a class="underline underline-offset-3 hover:no-underline" href="{{ route('login') }}">Уже есть
-                    аккаунт</a>
+                <a class="underline underline-offset-3 hover:no-underline" href="{{ route('registration') }}">Нет
+                    аккаунта?
+                    Регистрация</a>
             </div>
         </form>
     </div>

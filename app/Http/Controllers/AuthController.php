@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -34,7 +35,22 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
-    public function authenticate() {}
+    public function authenticate(LoginRequest $request)
+    {
+        $data = $request->validated();
+
+        if (Auth::attempt($data)) {
+            $request->session()->regenerate();
+
+            return redirect()
+                ->route('home')
+                ->with('login', 'Вы успешно вошли в аккаунт');
+        }
+
+        return back()
+            ->withErrors(['email' => 'Неверная почта или пароль'])
+            ->onlyInput('email');
+    }
 
     public function logout(Request $request)
     {

@@ -12,20 +12,20 @@
             <fieldset class="fieldset">
                 <legend class="fieldset-legend">Имя</legend>
                 <input name="name" type="text" class="input w-full" placeholder="Ваше имя..."
-                    value="{{ old('name') }}" />
+                    value="{{ old('name') }}" required />
                 @error('name')
                     <p class="label text-red-500">{{ $message }}</p>
                 @enderror
 
                 <legend class="fieldset-legend">Email</legend>
                 <input name="email" type="email" class="input w-full" placeholder="Ваш почтовый ящик..."
-                    value="{{ old('email') }}" />
+                    value="{{ old('email') }}" required />
                 @error('email')
                     <p class="label text-red-500">{{ $message }}</p>
                 @enderror
 
                 <legend class="fieldset-legend">Пароль</legend>
-                <input name="password" type="password" class="input w-full" placeholder="Придумайте пароль" />
+                <input name="password" type="password" class="input w-full" placeholder="Придумайте пароль" required />
                 @error('password')
                     <p class="label text-red-500">{{ $message }}</p>
                 @enderror
